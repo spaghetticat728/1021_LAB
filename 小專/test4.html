@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="info-tabs">
+        <button class="tab-btn active" data-target="product">商品介紹</button>
+        <button class="tab-btn" data-target="shipping">運送方式</button>
+    </div>
+
+    <div class="tab-content">
+        <div id="product" class="content active">
+            <h3>商品介紹</h3>
+            <p>這裡是商品的詳細說明，例如材質、尺寸、特色...</p>
+        </div>
+        <div id="shipping" class="content">
+            <h3>運送方式</h3>
+            <p>超商取貨、宅配、運費計算方式等內容。</p>
+        </div>
+    </div>
+
+    <style>
+        .info-tabs {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .tab-btn {
+            padding: 10px 20px;
+            border: none;
+            background-color: #eee;
+            cursor: pointer;
+            margin: 0 5px;
+            border-radius: 6px;
+            transition: background-color 0.3s;
+        }
+
+        .tab-btn.active {
+            background-color: #333;
+            color: white;
+        }
+
+        .tab-content .content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid #ccc;
+        }
+
+        .tab-content .content.active {
+            display: block;
+        }
+    </style>
+
+    <script>
+        const tabs = document.querySelectorAll('.tab-btn');
+        const contents = document.querySelectorAll('.content');
+
+        tabs.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // 清除所有按鈕的 active 狀態
+                tabs.forEach(b => b.classList.remove('active'));
+                // 清除所有內容顯示
+                contents.forEach(c => c.classList.remove('active'));
+
+                // 設定目前點擊的按鈕與對應內容為 active
+                btn.classList.add('active');
+                document.getElementById(btn.dataset.target).classList.add('active');
+            });
+        });
+    </script>
+</body>
+
+</html>

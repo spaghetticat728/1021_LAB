@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>關於我們</title>
+</head>
+<body>
+    <!-- 導覽列CSS -->
+    <style>
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background-color: black;
+            color: white;
+            display: flex;
+            /* 彈性布局，使內容自動隨容器大小分配位置 */
+            align-items: center;
+            /* 上下置中 */
+            justify-content: center;
+            /* flexbox中的對齊屬性，控制水平軸中元素的位置分配。
+            space-between: 從左到右完全平均分配位置 */
+            padding: 8px;
+            z-index: 1000;
+            /* 層數，數字越高越上層 */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            /* overflow: hidden; */
+            /* background-color: #333; */
+        }
+
+        .navbar a {
+            float: left;
+            font-size: 16px;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .logo {
+            left: 0;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            /* 移除超連結底線 */
+            margin-left: 15px;
+        }
+
+        /* .menu a:hover {
+            text-decoration: underline;
+        } */
+
+        .navbar a:hover,
+        .dropdown:hover .dropbtn {
+            background-color: gray;
+        }
+
+        .dropdown {
+            float: left;
+            overflow: hidden;
+        }
+
+        .dropdown .dropbtn {
+            font-size: 16px;
+            border: none;
+            outline: none;
+            color: white;
+            padding: 14px 16px;
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        body {
+            margin-top: 76px;
+        }
+    </style>
+
+    <!-- 導覽列 -->
+    <div class="navbar">
+        <div class="logo">
+            <a href="https://www.ladyflavor.com/products/cat-tent">
+                <img src="./Photo/logo_circle.png" style="width: 60px; left: 25px;">
+            </a>
+        </div>
+        <div class="menu">
+            <div class="dropdown">
+                <button class="dropbtn">火具系列
+                    <!-- 向下箭頭 -->
+                    <!-- <i class="fa fa-caret-down"></i> -->
+                </button>
+                <div class="dropdown-content">
+                    <a href="#">長棍</a>
+                    <a href="#">短棍</a>
+                    <a href="#">扇</a>
+                    <a href="#">poi</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropbtn">練習道具系列
+                    <!-- 向下箭頭 -->
+                    <!-- <i class="fa fa-caret-down"></i> -->
+                </button>
+                <div class="dropdown-content">
+                    <a href="https://www.ladyflavor.com/products/cat-tent">長棍</a>
+                    <a href="#">短棍</a>
+                    <a href="#">扇</a>
+                    <a href="#">poi</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropbtn">配件
+                    <!-- 向下箭頭 -->
+                    <!-- <i class="fa fa-caret-down"></i> -->
+                </button>
+                <div class="dropdown-content">
+                    <a href="#">火布</a>
+                    <a href="#">鋁棍</a>
+                    <a href="#">扇架</a>
+                </div>
+            </div>
+            <a href="">關於我們</a>
+            <a href="">聯絡我們</a>
+        </div>
+    </div>
+
+
+
+
+    <!-- footer CSS -->
+    <style>
+        body {
+            margin: 76PX 0 0 0;
+        }
+
+        footer {
+            width: 100%;
+            display: flex;
+            padding: 8px 0px 8px 50px;
+            background-color: black;
+            color: white;
+        }
+
+        footer>p {
+            font-size: 15px;
+            line-height: 2;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+
+    <!-- footer -->
+    <footer>
+        <p>
+            <a href="#">ig:instagram_account</a><br>
+            客服專線:04-XXXXXXXX<br>
+            <a href="#">關於我們</a>&nbsp;|&nbsp;<a href="#">聯絡我們</a><br>
+            客服信箱:XXXXXX123456@gmail.com<br>
+        </p>
+    </footer>
+</body>
+</html>

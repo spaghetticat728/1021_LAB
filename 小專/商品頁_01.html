@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./_js/jquery-3.7.1.js"></script>
     <title>商品頁_01</title>
 </head>
 
@@ -168,6 +169,7 @@
             margin-left: auto;
             margin-right: auto;
             margin-top: 150px;
+            border-radius: 20px;
         }
 
         .productImg {
@@ -177,10 +179,16 @@
         .productImg img {
             display: block;
             width: 100%;
+            border-radius: 20px 0 0 20px;
         }
 
         .productInfo {
             margin-left: 20px;
+        }
+
+        .productInfo #buy{
+            margin-left: 30px;
+            margin-top: 30px;
         }
 
         .price {
@@ -193,7 +201,11 @@
             flex-wrap: wrap;
             /* 水平間距 */
             gap: 10px;
-            margin: 10px 0;       
+            margin: 10px 0;
+        }
+
+        #productChoose p{
+            color: rgba(0, 0, 0, 0.600);
         }
 
         .option {
@@ -204,12 +216,64 @@
             margin: 10px;
             padding: 3px;
             border-radius: 8px;
-            
+
         }
 
         .option.selected {
             border: 2px solid rgb(69, 126, 80);
             color: rgb(69, 126, 80);
+        }
+
+        .productBox .buttonArea {
+            display: grid;
+            /* 水平排列 */
+            grid-auto-flow: column;
+            justify-content: end;
+            gap: 6px;
+            margin-top: 15px;
+        }
+
+        .productBox .howMany {
+            margin-top: 20px;
+        }
+
+        .howMany p {
+            font-size: 15px;
+            color: rgba(0, 0, 0, 0.600);
+        }
+
+        .howMany #quantity {
+            border-radius: 8px;
+            height: 23px;
+            width: 100px;
+            text-align: center;
+        }
+
+        .howMany .minus,
+        .howMany .plus {
+            background-color: rgb(184, 184, 184);
+            color: black;
+            border-radius: 8px;
+            border: none;
+            font-size: 16px;
+            /* margin: 40px 0; */
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+        }
+
+        .productBox #btnAddLove,
+        .productBox #btnAddCart {
+            background-color: black;
+            color: white;
+            border-radius: 4px;
+            border: none;
+            font-size: 16px;
+            /* margin: 20px 0px 0px 20px; */
+            padding: 6px 20px;
+            transition: background-color 0.3s;
+            justify-self: end;
+            cursor: pointer;
         }
     </style>
 
@@ -225,29 +289,250 @@
             <div class="productInfo">
                 <h1>twista火棍</h1>
                 <p class="price">$1200</p>
-                <p class="description">descriptiondescriptiondescriptiondescriptiondescription</p>
 
-                <!-- 尺寸選擇 -->
-                <div id="productChoose">
-                    <div class="option selected">123</div>
-                    <div class="option">456</div>
-                    <div class="option">789</div>
+                <div id="buy">
+                    <!-- 尺寸選擇 -->
+                    <div id="productChoose">
+                        <p class="youChoose">尺寸:隨選擇變動的文字</p>
+                        <div class="option selected">123</div>
+                        <div class="option">456</div>
+                        <div class="option">789</div>
+                    </div>
+
+                    <!-- 數量選擇器 -->
+                    <div class="howMany">
+                        <p>數量</p>
+                        <button class="minus">-</button>
+                        <input id="quantity" type="text" value="1" readonly>
+                        <button class="plus">+</button>
+                    </div>
+
+                    <!-- button -->
+                    <div class="buttonArea">
+                        <button id="btnAddLove">最愛</button>
+                        <button id="btnAddCart">加入購物車</button>
+                    </div>
                 </div>
-
-                <!-- 數量選擇器 -->
-                <div class="howMany">
-                    <button class="minus">-</button>
-                    <input type="text" value="1" readonly>
-                    <button class="plus">+</button>
-                </div>
-
-                <!-- button -->
-                <button id="btnAddLove">最愛</button>
-                <button id="btnAddCart">加入購物車</button>
             </div>
         </div>
 
     </main>
+
+    <script>
+        // 數量選擇器
+        $('.plus').on('click', function () {
+            let x = document.getElementById('quantity').value;
+            let num = Number(x);
+            num += 1;
+            document.getElementById('quantity').value = num;
+        })
+
+        $('.minus').on('click', function () {
+            let x = document.getElementById('quantity').value;
+            let num = Number(x);
+            if (x > 1) {
+                num -= 1;
+            }
+            document.getElementById('quantity').value = num;
+        })
+
+    </script>
+
+    <!-- 商品介紹 & 運送方式 CSS-->
+    <style>
+        .intro {
+            margin: 0 150px;
+        }
+
+        .intro .buttonArea {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .intro .btn {
+            background-color: #eee;
+            color: black;
+            border-radius: 8px;
+            border: none;
+            font-size: 20px;
+            margin: 40px 0;
+            padding: 10px 20px;
+            transition: background-color 0.3s;
+        }
+
+        .btn.active {
+            background-color: black;
+            color: white;
+        }
+
+        .Content .content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid #ccc;
+        }
+
+        .Content .content.active {
+            display: block;
+        }
+    </style>
+
+    <!-- 商品介紹 & 運送方式 -->
+    <div class="intro">
+        <div class="buttonArea">
+            <button class="btn active" data-target="product">商品介紹</button>
+            <button class="btn" data-target="transport">運送方式</button>
+        </div>
+        <div class="Content">
+            <div id="product" class="content active">
+                <h3>商品介紹</h3>
+                <p>商品介紹商品介紹，商品介紹商品介紹商品介紹。</p>
+            </div>
+            <div id="transport" class="content">
+                <h3>運送方式</h3>
+                <p>運送方式運送方式，運送方式運送方式運送方式。</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $('.btn').on('click', function () {
+            // 移除所有按鈕的 active
+            $('.btn').removeClass('active');
+            // 把目前點到的按鈕加上 active
+            $(this).addClass('active');
+
+            // 移除所有 content 的active
+            $('.content').removeClass('active');
+            // 在現在選取的content上加上active
+            const target = $(this).data('target');
+            // $(選取要的content的id).加上active
+            $('#' + target).addClass("active");
+        })
+    </script>
+
+    <!-- 相關商品小卡 CSS-->
+    <style>
+        .pro h3 {
+            padding: 0 0 0 50px;
+        }
+
+        .pro .cardList {
+            /* 啟用 CSS Grid 佈局，讓卡片能以格子的方式排列。 */
+            display: grid;
+            /* 每一欄最小寬度是 200px，最大可撐到 1fr（平均分配空間） */
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            /* 每張卡片之間的間距。 */
+            gap: 20px;
+            padding: 0 50px 50px 50px;
+        }
+
+        .pro .card {
+            /* display: grid; */
+            /* 設定了 三列的高度 */
+            /* auto -> 高度由內容自動決定 */
+            /* 1fr → 占用剩下的可用空間 */
+            /* grid-template-rows: auto 1fr auto; */
+            width: 200px;
+            border: solid 1px #ddd;
+            border-radius: 20px;
+            padding: 12px;
+            box-shadow: 0 2px 5px #dddd;
+            /* rbga(0,0,0,0,1) */
+            /* background-color: rgb(160, 160, 160); */
+        }
+
+        .pro .card img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .pro h4 {
+            font-size: 18px;
+            margin: 10px 0;
+            margin-bottom: 0px;
+        }
+
+        .pro .price {
+            color: orangered;
+            margin-bottom: 10px;
+        }
+
+        .pro .card button {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 10px;
+            background-color: black;
+            color: white;
+            cursor: pointer;
+            justify-self: end;
+        }
+
+        .pro .buttonArea {
+            display: grid;
+            /* 水平排列 */
+            grid-auto-flow: column;
+            justify-content: end;
+            gap: 6px;
+        }
+
+        .pro .card button:hover {
+            background-color: #242424e6;
+        }
+    </style>
+
+    <!-- 相關商品小卡 -->
+    <div class="pro">
+        <h3>相關商品</h3><br>
+        <div class="cardList">
+
+            <div class="card">
+                <img src="./Photo/logo_square.jpg">
+                <h4>twista火棍</h4>
+                <p class="price">$1200</p>
+                <div class="buttonArea">
+                    <button>最愛</button>
+                    <button>加入購物車</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="./Photo/logo_square.jpg">
+                <h4>twista火棍</h4>
+                <p class="price">$1200</p>
+                <div class="buttonArea">
+                    <button>最愛</button>
+                    <button>加入購物車</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="./Photo/logo_square.jpg">
+                <h4>twista火棍</h4>
+                <p class="price">$1200</p>
+                <div class="buttonArea">
+                    <button>最愛</button>
+                    <button>加入購物車</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="./Photo/logo_square.jpg">
+                <h4>twista火棍</h4>
+                <p class="price">$1200</p>
+                <div class="buttonArea">
+                    <button>最愛</button>
+                    <button>加入購物車</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="./Photo/logo_square.jpg">
+                <h4>twista火棍</h4>
+                <p class="price">$1200</p>
+                <div class="buttonArea">
+                    <button>最愛</button>
+                    <button>加入購物車</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- footer CSS -->
     <style>
