@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 
 <head>
     <meta charset="UTF-8">
@@ -105,15 +105,31 @@
             display: block;
         }
 
+        .navbar .buttonArea {
+            margin-left: 630px;
+            gap: 10px;
+        }
+
+        .navbar #btnCart,
+        .navbar #btnLogin,
+        .navbar #btnFav,
+        .navbar #btnLogout {
+            background-color: white;
+            color: black;
+            padding: 14px 16px;
+            border-radius: 10px;
+        }
+
         body {
             margin-top: 76px;
+            overflow-x: hidden;
         }
     </style>
 
     <!-- 導覽列 -->
     <div class="navbar">
         <div class="logo">
-            <a href="https://www.ladyflavor.com/products/cat-tent">
+            <a href="./小專主頁.html">
                 <img src="./Photo/logo_circle.png" style="width: 60px; left: 25px;">
             </a>
         </div>
@@ -155,10 +171,29 @@
                     <a href="#">扇架</a>
                 </div>
             </div>
-            <a href="">關於我們</a>
+            <a href="./關於我們.html">關於我們</a>
             <a href="">聯絡我們</a>
         </div>
+        <div class="buttonArea" id="loginArea">
+            <button id="btnFav" href="./1_我的最愛.html">我的最愛</button>
+            <button id="btnCart" href="./1_購物車頁.html">購物車</button>
+            <button id="btnLogin" href="./1_登入頁.html">登入</button>
+        </div>
     </div>
+
+    <script>
+        btnFav.onclick = () => {
+            window.location.href = '1_我的最愛.html';
+        }
+
+        btnCart.onclick = () => {
+            window.location.href = './1_購物車頁.html';
+        }
+
+        btnLogin.onclick = () => {
+            window.location.href = './1_登入頁.html';
+        }
+    </script>
 
     <!-- 商品box CSS -->
     <style>
@@ -186,7 +221,7 @@
             margin-left: 20px;
         }
 
-        .productInfo #buy{
+        .productInfo #buy {
             margin-left: 30px;
             margin-top: 30px;
         }
@@ -204,7 +239,7 @@
             margin: 10px 0;
         }
 
-        #productChoose p{
+        #productChoose p {
             color: rgba(0, 0, 0, 0.600);
         }
 
@@ -287,8 +322,8 @@
 
             <!-- 商品資訊 -->
             <div class="productInfo">
-                <h1>twista火棍</h1>
-                <p class="price">$1200</p>
+                <h1 id="productName">twista火棍</h1>
+                <p id="productPrice">$1200</p>
 
                 <div id="buy">
                     <!-- 尺寸選擇 -->
@@ -309,7 +344,7 @@
 
                     <!-- button -->
                     <div class="buttonArea">
-                        <button id="btnAddLove">最愛</button>
+                        <button id="btnAddFav">最愛</button>
                         <button id="btnAddCart">加入購物車</button>
                     </div>
                 </div>
@@ -564,9 +599,9 @@
     <footer>
         <p>
             <a href="#">ig:instagram_account</a><br>
-            客服專線:04-XXXXXXXX<br>
-            <a href="#">關於我們</a>&nbsp;|&nbsp;<a href="#">聯絡我們</a><br>
-            客服信箱:XXXXXX123456@gmail.com<br>
+            電話:04-XXXXXXXX<br>
+            信箱:XXXXXX123456@gmail.com<br>
+            <a href="./關於我們.html">關於我們</a>&nbsp;|&nbsp;<a href="#">聯絡我們</a><br>
         </p>
     </footer>
 </body>

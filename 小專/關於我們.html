@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./_js/jquery-3.7.1.js"></script>
     <title>關於我們</title>
 </head>
+
 <body>
     <!-- 導覽列CSS -->
     <style>
@@ -102,6 +105,21 @@
             display: block;
         }
 
+        .navbar .buttonArea {
+            margin-left: 630px;
+            gap: 10px;
+        }
+
+        .navbar #btnCart,
+        .navbar #btnLogin,
+        .navbar #btnFav,
+        .navbar #btnLogout {
+            background-color: white;
+            color: black;
+            padding: 14px 16px;
+            border-radius: 10px;
+        }
+
         body {
             margin-top: 76px;
         }
@@ -110,7 +128,7 @@
     <!-- 導覽列 -->
     <div class="navbar">
         <div class="logo">
-            <a href="https://www.ladyflavor.com/products/cat-tent">
+            <a href="./小專主頁.html">
                 <img src="./Photo/logo_circle.png" style="width: 60px; left: 25px;">
             </a>
         </div>
@@ -152,13 +170,144 @@
                     <a href="#">扇架</a>
                 </div>
             </div>
-            <a href="">關於我們</a>
+            <a href="./關於我們.html">關於我們</a>
             <a href="">聯絡我們</a>
+        </div>
+        <div class="buttonArea" id="loginArea">
+            <button id="btnFav">我的最愛</button>
+            <button id="btnCart">購物車</button>
+            <button id="btnLogin">登入</button>
         </div>
     </div>
 
+    <script>
+        btnFav.onclick = () => {
+            window.location.href = '1_我的最愛.html';
+        }
 
+        btnCart.onclick = () => {
+            window.location.href = './1_購物車頁.html';
+        }
 
+        btnLogin.onclick = () => {
+            window.location.href = './1_登入頁.html';
+        }
+    </script>
+
+    <!-- 各種介紹 CSS -->
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+
+        .breaker {
+            flex-basis: 100%;
+            height: 0;
+            /* 不影響視覺 */
+        }
+
+        .allIntro {
+            display: flex;
+            width: 100%;
+            flex-wrap: wrap;
+            justify-content: center;
+            /* border: solid 2px black; */
+        }
+
+        .allIntro .title {
+            font-size: 32px;
+            margin-right: 1200px;
+        }
+
+        .intro {
+            display: flex;
+            width: 80%;
+            /* border: solid 2px black; */
+            margin-bottom: 40px;
+            /* justify-content: center; */
+        }
+
+        /* .intro .photo {
+            width: 40%;
+            border: solid 2px black;
+        } */
+
+        .photo img {
+            width: 400px;
+        }
+
+        .allIntro .TextIntro {
+            padding-left: 80px;
+            padding-right: 80px;
+        }
+
+        .allIntro #stickIntro {
+            margin-top: 30px;
+        }
+
+        .allIntro h3 {
+            font-size: 30px;
+        }
+
+        .allIntro p {
+            font-size: 20px;
+        }
+    </style>
+
+    <!-- 各種介紹 -->
+    <div class="allIntro">
+        <!-- 道具師介紹 -->
+        <h2 class="title">道具師介紹</h2>
+        <div class="breaker"></div>
+        <div class="intro" id="makerIntro">
+            <!-- 道具師照片 -->
+            <div class="photo" id="makerImg">
+                <img src="./Photo/logo_vertical.jpg">
+            </div>
+
+            <!-- 道具師文字介紹 -->
+            <div class="TextIntro" id="makerTextIntro">
+                <h3>O O O</h3>
+                <p>道具師介紹道具師介紹，道具師介紹道具師介紹道具師介紹，道具師介紹道具師介紹，道具師介紹道具師介紹道具師介紹道具師介紹，道具師介紹道具師介紹。</p>
+            </div>
+        </div>
+
+        <div class="breaker"></div>
+
+        <!-- 材料介紹 -->
+        <!-- 火布介紹 -->
+        <h2 class="title">材料介紹</h2>
+        <div class="breaker"></div>
+        <div class="intro" id="kevlarIntro">
+            <!-- 火布照片 -->
+            <div class="photo" id="kevlarImg">
+                <img src="./Photo/logo_vertical.jpg">
+            </div>
+
+            <!-- 火布文字介紹 -->
+            <div class="TextIntro" id="kevlarTextIntro">
+                <h3>火布</h3>
+                <p>火布使用Kevlar纖維混玻璃纖維，一般用於防火布料，可耐400℃高溫，可重複使用300~500次。</p>
+            </div>
+        </div>
+
+        <div class="breaker"></div>
+
+        <!-- 棍身介紹 -->
+        <div class="intro" id="stickIntro">
+
+            <!-- 鋁棍照片 -->
+            <div class="photo" id="stickImg">
+                <img src="./Photo/logo_vertical.jpg">
+            </div>
+
+            <!-- 鋁棍文字介紹 -->
+            <div class="TextIntro" id="stickTextIntro">
+                <h3>棍身</h3>
+                <p>鋁棍文字介紹鋁棍文字介紹，鋁棍文字介紹鋁棍文字介紹鋁棍文字介紹鋁棍文字介紹鋁棍文字介紹，鋁棍文字介紹鋁棍文字介紹。</p>
+            </div>
+        </div>
+    </div>
 
     <!-- footer CSS -->
     <style>
@@ -190,10 +339,11 @@
     <footer>
         <p>
             <a href="#">ig:instagram_account</a><br>
-            客服專線:04-XXXXXXXX<br>
-            <a href="#">關於我們</a>&nbsp;|&nbsp;<a href="#">聯絡我們</a><br>
-            客服信箱:XXXXXX123456@gmail.com<br>
+            電話:04-XXXXXXXX<br>
+            信箱:XXXXXX123456@gmail.com<br>
+            <a href="./關於我們.html">關於我們</a>&nbsp;|&nbsp;<a href="#">聯絡我們</a><br>
         </p>
     </footer>
 </body>
+
 </html>

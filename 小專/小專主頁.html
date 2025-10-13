@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 
 <head>
     <meta charset="UTF-8">
@@ -7,6 +7,7 @@
     <title>趙樣造具</title>
     <link rel="stylesheet" href="css/position.css">
     <script src="./_js/jquery-3.7.1.js"></script>
+    <script src="./_js/1_script.js"></script>
 </head>
 
 <body>
@@ -104,6 +105,21 @@
 
         .dropdown:hover .dropdown-content {
             display: block;
+        }
+
+        .navbar .buttonArea {
+            margin-left: 630px;
+            gap: 10px;
+        }
+
+        .navbar #btnCart,
+        .navbar #btnLogin,
+        .navbar #btnFav,
+        .navbar #btnLogout{
+            background-color: white;
+            color: black;
+            padding: 10px 12px;
+            border-radius: 10px;
         }
     </style>
 
@@ -247,7 +263,7 @@
     <!-- 導覽列 -->
     <div class="navbar">
         <div class="logo">
-            <a href="https://www.ladyflavor.com/products/cat-tent">
+            <a href="./小專主頁.html">
                 <img src="./Photo/logo_circle.png" style="width: 60px; left: 25px;">
             </a>
         </div>
@@ -289,10 +305,29 @@
                     <a href="#">扇架</a>
                 </div>
             </div>
-            <a href="">關於我們</a>
+            <a href="./關於我們.html">關於我們</a>
             <a href="">聯絡我們</a>
         </div>
+        <div class="buttonArea" id="loginArea">
+            <button id="btnFav">我的最愛</button>
+            <button id="btnCart">購物車</button>
+            <button id="btnLogin">登入</button>
+        </div>
     </div>
+
+    <script>
+        btnFav.onclick = () => {
+            window.location.href = '1_我的最愛.html';
+        }
+
+        btnCart.onclick = () => {
+            window.location.href = './1_購物車頁.html';
+        }
+
+        btnLogin.onclick = () => {
+            window.location.href = './1_登入頁.html';
+        }
+    </script>
 
     <!-- 輪播圖片 -->
     <div id="mainphoto">
@@ -404,9 +439,9 @@
     <footer>
         <p>
             <a href="#">ig:instagram_account</a><br>
-            客服專線:04-XXXXXXXX<br>
-            <a href="#">關於我們</a>&nbsp;|&nbsp;<a href="#">聯絡我們</a><br>
-            客服信箱:XXXXXX123456@gmail.com<br>
+            電話:04-XXXXXXXX<br>
+            信箱:XXXXXX123456@gmail.com<br>
+            <a href="./關於我們.html">關於我們</a>&nbsp;|&nbsp;<a href="#">聯絡我們</a><br>
         </p>
     </footer>
 </body>
