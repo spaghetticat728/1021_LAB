@@ -5,10 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./_js/jquery-3.7.1.js"></script>
-    <title>商品頁_01</title>
+    <title>長棍-Twista火頭</title>
 </head>
 
 <body>
+    <script>
+        const product = {
+            id: 'p001',
+            name: '長棍-Twista火頭',
+            price: 1200
+        }
+    </script>
+
     <!-- 導覽列CSS -->
     <style>
         .navbar {
@@ -182,15 +190,15 @@
     </div>
 
     <script>
-        btnFav.onclick = () => {
+        document.getElementById('btnFav').onclick = () => {
             window.location.href = '1_我的最愛.html';
         }
 
-        btnCart.onclick = () => {
+        document.getElementById('btnCart').onclick = () => {
             window.location.href = './1_購物車頁.html';
         }
 
-        btnlogin.onclick = () => {
+        document.getElementById('btnlogin').onclick = () => {
             window.location.href = './1_登入頁.html';
         }
     </script>
@@ -226,7 +234,7 @@
             margin-top: 30px;
         }
 
-        .price {
+        #productPrice {
             color: orangered;
         }
 
@@ -235,28 +243,33 @@
             /* 超過寬度換行 */
             flex-wrap: wrap;
             /* 水平間距 */
-            gap: 10px;
+            ;
+            gap: 20px;
             margin: 10px 0;
         }
 
-        #productChoose p {
+        .youChoose {
             color: rgba(0, 0, 0, 0.600);
         }
 
+        /* 品項選擇 */
         .option {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             width: 50px;
             height: auto;
             border: solid 1px gray;
             cursor: pointer;
-            margin: 10px;
-            padding: 3px;
+            padding: 5px;
             border-radius: 8px;
-
         }
 
         .option.selected {
-            border: 2px solid rgb(69, 126, 80);
-            color: rgb(69, 126, 80);
+            /* border: 2px solid rgb(69, 126, 80); */
+            /* color: rgb(69, 126, 80); */
+            color: white;
+            background-color: black;
         }
 
         .productBox .buttonArea {
@@ -322,16 +335,16 @@
 
             <!-- 商品資訊 -->
             <div class="productInfo">
-                <h1 id="productName">twista火棍</h1>
-                <p id="productPrice">$1200</p>
+                <h1 id="productName"></h1>
+                <p id="productPrice"></p>
 
                 <div id="buy">
                     <!-- 尺寸選擇 -->
-                    <div id="productChoose">
-                        <p class="youChoose">尺寸:隨選擇變動的文字</p>
-                        <div class="option selected">123</div>
-                        <div class="option">456</div>
-                        <div class="option">789</div>
+                    <p class="youChoose">尺寸:隨選擇變動的文字</p>
+                    <div class="productChoose">
+                        <div class="option selected">110cm</div>
+                        <div class="option">130cm</div>
+                        <div class="option">140cm</div>
                     </div>
 
                     <!-- 數量選擇器 -->
@@ -371,6 +384,16 @@
             document.getElementById('quantity').value = num;
         })
 
+        // 品項選擇
+        document.querySelectorAll('.productChoose').forEach(optionGroup => {
+            const options = optionGroup.querySelectorAll('.option');
+            options.forEach(option => {
+                option.addEventListener('click', () => {
+                    options.forEach(all => all.classList.remove('selected'));
+                    option.classList.add('selected');
+                })
+            })
+        })
     </script>
 
     <!-- 商品介紹 & 運送方式 CSS-->

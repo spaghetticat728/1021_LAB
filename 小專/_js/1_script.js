@@ -5,7 +5,7 @@
 // 模擬帳號
 const USER1 = {
     username: 'wrz',
-    password: '1234'
+    password: '12341234'
 }
 
 // 帳密正確 -> user存進localStorage裡面 -> 登入成功
@@ -103,7 +103,7 @@ function addToCart(item) {
 }
 
 // 綁定加入購物車事件
-document.getElementById('btnAddCart').addEventListener('click', addToCart);
+document.getElementById('btnAddCart').addEventListener('click', () => addToCart(product));
 
 
 // ------------
@@ -149,7 +149,7 @@ function addToFav(item){
         fav.splice(index, 1);
         alert(item.name + '從最愛移除');
     }
-    saveFav();
+    saveFav(fav);
 }
 
 // 商品頁資料填入
@@ -157,11 +157,11 @@ const productName = document.getElementById('productName');
 const productPrice = document.getElementById('productPrice');
 
 // 商品資料模板
-const product = {
-    id: 'p001',
-    name: 'Twista火棍',
-    price: 1200
-}
+// const product = {
+//     id: 'p001',
+//     name: 'Twista火棍',
+//     price: 1200
+// }
 
 // productName, productPrice填入頁面顯示
 if (productName){
