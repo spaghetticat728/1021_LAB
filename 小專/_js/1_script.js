@@ -6,6 +6,7 @@ function login(username) {
     localStorage.setItem('user', JSON.stringify({ name: username, token: 'fake-' + Date.now() }));
 }
 
+// 回傳布林值
 function isLogin() {
     return !!localStorage.getItem('user');
 }
@@ -54,15 +55,15 @@ if (btnLogin) {
 //             alert('已登出');
 //         };
 
-        // document.getElementById('btnLogin').remove();
-        // // loginArea.innerHTML += `<button id="btnLogout">登出</button>`;
-        // const loginArea = document.getElementById('loginArea');
-        // loginArea.appendChild(btnLogout);
-        // const btnLogout = document.getElementById("btnLogout");
-        // btnLogout.onclick = () => {
-        //     logout();
-        //     window.location.href = '小專主頁.html';
-        // }   
+// document.getElementById('btnLogin').remove();
+// // loginArea.innerHTML += `<button id="btnLogout">登出</button>`;
+// const loginArea = document.getElementById('loginArea');
+// loginArea.appendChild(btnLogout);
+// const btnLogout = document.getElementById("btnLogout");
+// btnLogout.onclick = () => {
+//     logout();
+//     window.location.href = '小專主頁.html';
+// }   
 //     }
 
 //     else {
@@ -79,9 +80,9 @@ function updateNavLogin() {
         btnLogin.textContent = '登出';
         btnLogin.href = '#';
         btnLogin.onclick = (e) => {
-            e.preventDefault();
-            logout();            
-            updateNavLogin();    
+            // e.preventDefault();
+            logout();
+            updateNavLogin();
             alert('已登出');
         };
     } else {
@@ -106,3 +107,125 @@ updateNavLogin();
 //     };
 //     loginArea.appendChild(btnLogout);
 // }
+
+
+// --------------
+// 購物車
+// --------------
+function loadCart() {
+    return JSON.parse(localStorage.getItem('cart') || '');
+}
+
+function saveCart(cart) {
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+function addToCart(item) {
+    if (!islogin()) {
+        alert("請先登入!");
+        return;
+    }
+    const cart = loadCart();
+    const found = cart.find(function (i) {
+        return i.id === item.id;
+    });
+
+    if (found) {
+        found.qty += 1;
+    }
+    else cart.push({ ...item, qty: 1 });
+    saveCart(cart);
+    alert("已加入購物車");
+    // 箭頭函式寫法 -> cart.find(i => i.id === item.id)
+}
+
+
+// ------------
+// 最愛
+// ------------
+function loadFav() {
+    return JSON.parse(localStorage.getItem('fav'));
+}
+
+function saveFav(favs) {
+    localStorage.setItem('fav', JSON.stringify(fav));
+}
+
+// 回傳布林值
+function isFav(item) {
+    const fav = loadFav();
+    return fav.some(function (i) {
+        return i.id === item.id;
+    })
+}
+
+function toggleFav(item) {
+    if (!isLogin) {
+        alert("請先登入!");
+        return;
+    }
+
+    let fav = loadFav(); // 陣列
+    const index = fav.findIndex(i => i.id === item.id); // true -> index, false -> -1
+    if (index === -1) {
+        fav.push(item);
+        alert(item.name + '加入最愛');
+    }
+    else {
+        fav.splice(index, 1);
+        alert(item.name + '從最愛移除');
+    }
+    saveFav();
+}
+
+
+// 商品頁初始化
+// ---------------
+
+const btnAddCart = document.getElementById('btnAddCart');
+const btnFav = document.getElementById('btnFav');
+
+// 商品資料
+const product = {
+    id: 'p001',
+    name: 'Twista火棍',
+    price: 1200
+}
+
+// 輸入商品頁資訊
+const productName = document.getElementById('productName');
+const productPrice = document.getElementById('productPrice');
+
+if (productName) {
+    productName.textContent = product.name;
+}
+if (productPrice) {
+    productPrice.textContent = '價格:' + product.priceㄤ
+}
+
+// 綁定購物車按鈕
+if (btnAddCart) {
+    btnAddCart.addEventListener('click', () => addToCart(product));
+}
+
+// 最愛按鈕樣式切換
+if (btnFav) {
+    function updateFavBtn() {
+        if (isFavorited(product)) {
+            btnFav.classList.add('fav');
+            btnFav.textContent = '❤已收藏'
+        }
+        else {
+            btnFav.classList.remove('fav');
+            btnFav.textContent = '加入最愛';
+        }
+    }
+
+    updateFavBtn(); // 頁面一開始就執行，確保一開始就顯示正確的
+
+    // 綁定最愛按鈕事件
+    btnFav.addEventListener('click', () => {
+        toggleFav(product);
+        updateFavBtn();
+    })
+}
