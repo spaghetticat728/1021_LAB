@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,15 +8,101 @@
     <script src="./_js/jquery-3.7.1.js"></script>
     <link rel="stylesheet" href="./css/1_style.css">
 </head>
+
 <body>
-    <div id="logInBox">
-    <h2>登入</h2>
-    帳號: <input type="text" id="username" placeholder="輸入帳號"><br>
-    密碼: <input type="password" placeholder=輸入密碼><br>
-    <button id="btnLogIn">登入</button>
+    <style>
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            /* display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 30vh; */
+            overflow-y: hidden;
+
+            background-image: url('./Photo/ko_firephoto01_horizontal_21.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .background {
+            /* margin-right: 0px; */
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(5px);
+            margin-top: 0;
+            /* width: 1000px; */
+            height: 100vh;
+            background-position: top center;
+        }
+
+        #empty {
+            margin-top: 0px;
+            flex-basis: 100%;
+            height: 0;
+        }
+
+        h2 {
+            margin-right: 300px;
+            color: white;
+        }
+
+        #loginBox {
+            text-align: center;
+            width: 450px;
+            border: solid 4px white;
+            border-radius: 8px;
+            padding: 0 40px 25px 24px;
+            margin: auto;
+            margin-top: 340px;
+        }
+
+        #username,
+        #pass {
+            border-radius: 6px;
+            height: 24px;
+            background-color: rgba(0, 0, 0, 0);
+            border: solid 2px white;
+            color: white;
+        }
+
+        #username::placeholder,
+        #pass::placeholder{
+            color: white;
+            font-size: 14px;
+        }
+
+        p {
+            font-size: 20px;
+            color: white;
+        }
+
+
+        button {
+            margin-left: 330px;
+            background-color: rgba(240, 248, 255, 0);
+            border: solid 1px white;
+            border-radius: 6px;
+            font-size: 18px;
+            padding: 6px 15px;
+            color: white;
+        }
+    </style>
+
+    <div class="background">
+        <div id="empty" style="color: rgba(255, 255, 255, 0);">000</div>
+        <div id="loginBox">
+            <h2>登入</h2>
+            <p>帳號: <input type="text" id="username" placeholder="輸入帳號" style="color: white;"></p>
+            <p>密碼: <input type="password" id="pass" placeholder=輸入密碼></p>
+            <button id="btnLogin">登入</button>
+        </div>
     </div>
-
     <script src="./_js/1_script.js"></script>
-
 </body>
+
 </html>

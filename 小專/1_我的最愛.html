@@ -1,15 +1,37 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>我的最愛</title>
     <script src="./_js/jquery-3.7.1.js"></script>
     <link rel="stylesheet" href="./css/1_style.css">
-    <script src="./_js/1_script.js"></script>
+
 </head>
+
+<style>
+    body {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 30vh;
+        }
+
+    #favList{
+            width: 800px;
+            margin: auto;
+            border: solid 1px black;
+            border-radius: 8px;
+        }
+</style>
+
 <body>
-    <h2>我的最愛</h2>
-    <div id="favList"></div>
+    <main>
+        <h2>我的最愛</h2>
+        <div id="favList"><p>目前沒有最愛商品</p></div>
+        <script src="./_js/1_script.js"></script>
+    </main>
 </body>
+
 </html>

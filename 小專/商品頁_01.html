@@ -111,7 +111,7 @@
         }
 
         .navbar #btnCart,
-        .navbar #btnLogin,
+        .navbar #btnlogin,
         .navbar #btnFav,
         .navbar #btnLogout {
             background-color: white;
@@ -177,7 +177,7 @@
         <div class="buttonArea" id="loginArea">
             <button id="btnFav" href="./1_我的最愛.html">我的最愛</button>
             <button id="btnCart" href="./1_購物車頁.html">購物車</button>
-            <button id="btnLogin" href="./1_登入頁.html">登入</button>
+            <button id="btnlogin" href="./1_登入頁.html">登入</button>
         </div>
     </div>
 
@@ -190,7 +190,7 @@
             window.location.href = './1_購物車頁.html';
         }
 
-        btnLogin.onclick = () => {
+        btnlogin.onclick = () => {
             window.location.href = './1_登入頁.html';
         }
     </script>
@@ -297,15 +297,15 @@
             cursor: pointer;
         }
 
-        .productBox #btnAddLove,
+        .productBox #btnAddFav,
         .productBox #btnAddCart {
             background-color: black;
             color: white;
-            border-radius: 4px;
+            border-radius: 6px;
             border: none;
             font-size: 16px;
             /* margin: 20px 0px 0px 20px; */
-            padding: 6px 20px;
+            padding: 8px 20px;
             transition: background-color 0.3s;
             justify-self: end;
             cursor: pointer;
@@ -344,7 +344,7 @@
 
                     <!-- button -->
                     <div class="buttonArea">
-                        <button id="btnAddFav">最愛</button>
+                        <button id="btnAddFav"></button>
                         <button id="btnAddCart">加入購物車</button>
                     </div>
                 </div>
@@ -604,6 +604,8 @@
             <a href="./關於我們.html">關於我們</a>&nbsp;|&nbsp;<a href="#">聯絡我們</a><br>
         </p>
     </footer>
+
+    <script src="./_js/1_script.js"></script>
 </body>
 
 </html>

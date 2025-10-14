@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>趙樣造具</title>
-    <link rel="stylesheet" href="css/position.css">
+    <link rel="stylesheet" href="./css/1_style.css">
     <script src="./_js/jquery-3.7.1.js"></script>
-    <script src="./_js/1_script.js"></script>
+    
 </head>
 
 <body>
@@ -113,9 +113,9 @@
         }
 
         .navbar #btnCart,
-        .navbar #btnLogin,
+        .navbar #btnlogin,
         .navbar #btnFav,
-        .navbar #btnLogout{
+        .navbar #btnLogout {
             background-color: white;
             color: black;
             padding: 10px 12px;
@@ -311,22 +311,22 @@
         <div class="buttonArea" id="loginArea">
             <button id="btnFav">我的最愛</button>
             <button id="btnCart">購物車</button>
-            <button id="btnLogin">登入</button>
+            <button id="btnlogin" src="./1_登入頁.html">登入</button>
         </div>
     </div>
 
     <script>
-        btnFav.onclick = () => {
-            window.location.href = '1_我的最愛.html';
-        }
+        // document.getElementById('btnFav').addEventListener('click', () => {
+        //     window.location.href = '1_我的最愛.html';
+        // })
 
-        btnCart.onclick = () => {
-            window.location.href = './1_購物車頁.html';
-        }
+        // document.getElementById('btnCart').addEventListener('click',() => {
+        //     window.location.href = './1_購物車頁.html';
+        // })
 
-        btnLogin.onclick = () => {
-            window.location.href = './1_登入頁.html';
-        }
+        // document.getElementById('btnlogin').addEventListener('click',() => {
+        //     window.location.href = './1_登入頁.html';
+        // })
     </script>
 
     <!-- 輪播圖片 -->
@@ -390,7 +390,7 @@
             <h4>twista火棍</h4>
             <p class="price">$1200</p>
             <div class="buttonArea">
-                <button>最愛</button>
+                <button class="btnAddFav">最愛</button>
                 <button>加入購物車</button>
             </div>
         </div>
@@ -399,7 +399,7 @@
             <h4>twista火棍</h4>
             <p class="price">$1200</p>
             <div class="buttonArea">
-                <button>最愛</button>
+                <button class="btnAddFav">最愛</button>
                 <button>加入購物車</button>
             </div>
         </div>
@@ -444,6 +444,7 @@
             <a href="./關於我們.html">關於我們</a>&nbsp;|&nbsp;<a href="#">聯絡我們</a><br>
         </p>
     </footer>
+    <script src="./_js/1_script.js"></script>
 </body>
 
 </html>
