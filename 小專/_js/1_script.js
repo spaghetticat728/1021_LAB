@@ -87,19 +87,23 @@ function addToCart(item) {
         return;
     }
     const cart = loadCart();
+    const selectOption = document.getElementById('productChoose').querySelector('.option.selected');
+    const option = selectOption.textContent;
+    const qtyInput = parseInt(document.getElementById('qtyInput').querySelector('#quantity').value);
     // 尋找該商品是否已在購物車
-    // 回傳item(key?)
+    // 回傳找到的物件
     // 若沒有 -> 回傳0
-    const found = cart.find(i => i.id == item.id);
+    const found = cart.find(i => i.id == item.id && i.option == option);
+    // console.log(typeof(found));
     if (found) {
-        found.qty += 1;
+        found.qty += qtyInput;
     }
     else {
-        cart.push({ ...item, qty: 1 });
+        cart.push({ ...item, option: option, qty: qtyInput});
     }
     // 新cart存回localStorage
     saveCart(cart);
-    alert("已加入購物車");
+    alert(`${product.name}  ${option}  ${qtyInput}件 已加入購物車`);
 }
 
 // 綁定加入購物車事件

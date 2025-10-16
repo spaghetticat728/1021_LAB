@@ -109,7 +109,7 @@
 
         .navbar .buttonArea {
             margin-left: 630px;
-            gap: 10px;
+            gap: 20px;
         }
 
         .navbar #btnCart,
@@ -120,6 +120,11 @@
             color: black;
             padding: 10px 12px;
             border-radius: 10px;
+            border: none;
+        }
+
+        .logo a{
+            background-color: rgba(128, 128, 128, 0);
         }
     </style>
 
@@ -321,17 +326,17 @@
     </div>
 
     <script>
-        // document.getElementById('btnFav').addEventListener('click', () => {
-        //     window.location.href = '1_我的最愛.html';
-        // })
+        document.getElementById('btnFav').addEventListener('click', () => {
+            window.location.href = '1_我的最愛.html';
+        })
 
-        // document.getElementById('btnCart').addEventListener('click',() => {
-        //     window.location.href = './1_購物車頁.html';
-        // })
+        document.getElementById('btnCart').addEventListener('click',() => {
+            window.location.href = './1_購物車頁.html';
+        })
 
-        // document.getElementById('btnlogin').addEventListener('click',() => {
-        //     window.location.href = './1_登入頁.html';
-        // })
+        document.getElementById('btnlogin').addEventListener('click',() => {
+            window.location.href = './1_登入頁.html';
+        })
     </script>
 
     <!-- 輪播圖片 -->

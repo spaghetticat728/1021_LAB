@@ -7,46 +7,145 @@
     <title>購物車</title>
     <script src="./_js/jquery-3.7.1.js"></script>
     <link rel="stylesheet" href="./css/1_style.css">
-    <script src="./_js/1_script.js"></script>
+    <!-- <script src="./_js/1_script.js"></script> -->
 </head>
 
 <body>
     <style>
-       body {
+        body {
             display: flex;
             align-items: flex-start;
             justify-content: center;
-            padding-top: 30vh;
+            /* padding-top: 30vh; */
         }
 
         h2 {
             font-size: 30px;
         }
 
-        #cartItem{
+        #cartList {
             width: 800px;
             margin: auto;
             border: solid 1px black;
             border-radius: 8px;
         }
 
-        button{
-            margin-left: 695px;
+        .cartItem button {
+            /* margin-left: 695px; */
             border-radius: 6px;
-            font-size: 18px;
+            font-size: 16px;
             padding: 6px 15px;
             background-color: black;
             color: white;
+            border: none;
+        }
+
+        .cartItem img {
+            width: 200px;
+            height: 200px;
+        }
+
+        .cartItem h4{
+            margin-left: 20px;
+        }
+
+        .cartItem p{
+            margin-left: 50px;
+        }
+
+        .btnArea{
+            align-content: center;
+            margin-left: 350px;
+        }
+
+        .cartItem {
+            display: flex;
         }
     </style>
 
     <main>
         <h2>購物車</h2>
-        <div id="cartItem"><p>購物車裡還沒有東西哦!</p></div>
+        <div id="cartList"></div>
 
-        <p style="font-size: 20px;">總金額: <span id="totalPrice">0</span> 元</p>
+        <p style="font-size: 20px;">總金額: <span id="totalPrice"></span> 元</p>
         <button id="btnCheckOut">前往結帳</button>
     </main>
+
+    
+    <!-- 顯示商品在購物車 & 結帳 -->
+    <script>
+        function loadCart() {
+            return JSON.parse(localStorage.getItem('cart')) || [];
+        }
+
+        let totalPrice = 0;
+        const cartList = document.getElementById('cartList');
+        // console.log(cartList);
+        function showCart() {
+            const cart = loadCart();
+            // console.log(cart + '111');
+
+            if (cart.length == 0) {
+                cartList.innerHTML = '<p>購物車裡還沒有商品</p>'
+                document.getElementById('totalPrice').textContent = '0';
+                return;
+            }
+
+            cartList.innerHTML = cart.map((item, index) => {
+                const itemTotal = item.price * item.qty;
+                totalPrice += itemTotal;
+
+                return `<div class="cartItem" data-index="${index}">
+                <img src=${item.img}>
+                <main class='main'>
+                <h4>${item.name}</h4>
+                <p>選項: ${item.option}</p>    
+                <p>價格: ${item.price}</p>
+                <p>數量: ${item.qty}</p>
+                </main>
+                <div class="btnArea">
+                    <button class="btnDelete">刪除</button>                
+                </div>
+            </div>`
+            }).join('');
+            document.getElementById('totalPrice').textContent = totalPrice;
+
+            // 綁定刪除按鈕事件
+            document.querySelectorAll('.btnDelete').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+
+                    // 找到e.target(被點擊的元素 -> 刪除按鈕<button>)最近的父元素
+                    // 取出 HTML 裡的 data-index 屬性值
+                    const index = e.target.closest('.cartItem').dataset.index;
+                    removeFromCart(index);
+                })
+            })
+        }
+
+        function removeFromCart(index) {
+            const cart = loadCart();
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            showCart();
+        }
+
+        showCart();
+
+        // 結帳
+        btnCheckOut.addEventListener('click', () => {
+            const cart = loadCart();
+
+            if(cart.length == 0){
+                alert('購物車沒有商品');
+                return;
+            }
+
+            alert(`購買成功! 共${cart.length}項商品，總計${totalPrice}元`);
+            localStorage.removeItem('cart');
+            showCart();
+        })
+    </script>
+
 </body>
 
 </html>
