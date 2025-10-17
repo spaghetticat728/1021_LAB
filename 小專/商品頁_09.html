@@ -389,7 +389,9 @@
         $('.plus').on('click', function () {
             let x = document.getElementById('quantity').value;
             let num = Number(x);
-            num += 1;
+            if (x < 6) {
+                num += 1;
+            }
             document.getElementById('quantity').value = num;
         })
 

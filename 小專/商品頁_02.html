@@ -391,7 +391,9 @@
         $('.plus').on('click', function () {
             let x = document.getElementById('quantity').value;
             let num = Number(x);
-            num += 1;
+            if (x < 6) {
+                num += 1;
+            }
             document.getElementById('quantity').value = num;
         })
 
@@ -503,7 +505,7 @@
             margin-left: 120px;
         }
 
-        .pro .cardList{
+        .pro .cardList {
             display: flex;
             justify-content: center;
             gap: 230px;
@@ -564,7 +566,7 @@
             background-color: #242424e6;
         }
 
-        .card a{
+        .card a {
             text-decoration: none;
         }
     </style>

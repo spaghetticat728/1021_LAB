@@ -11,6 +11,11 @@
 <body>
     <!-- 導覽列CSS -->
     <style>
+        body {
+            margin-top: 76px;
+            overflow-x: hidden;
+        }
+
         .navbar {
             position: fixed;
             top: 0;
@@ -26,7 +31,7 @@
             justify-content: center;
             /* flexbox中的對齊屬性，控制水平軸中元素的位置分配。
             space-between: 從左到右完全平均分配位置 */
-            padding: 8px;
+            padding: 16px;
             z-index: 1000;
             /* 層數，數字越高越上層 */
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -58,9 +63,13 @@
             text-decoration: underline;
         } */
 
-        .navbar a:hover,
+        /* .navbar a:hover, */
         .dropdown:hover .dropbtn {
             background-color: gray;
+        }
+
+        .navbar .logo:hover {
+            background-color: none;
         }
 
         .dropdown {
@@ -77,6 +86,7 @@
             background-color: inherit;
             font-family: inherit;
             margin: 0;
+            cursor: pointer;
         }
 
         .dropdown-content {
@@ -107,21 +117,44 @@
 
         .navbar .buttonArea {
             margin-left: 630px;
-            gap: 10px;
+            gap: 20px;
         }
 
         .navbar #btnCart,
-        .navbar #btnLogin,
-        .navbar #btnFav,
-        .navbar #btnLogout {
-            background-color: white;
-            color: black;
+        .navbar #btnlogin,
+        .navbar #btnFav {
+            background-color: black;
+            color: white;
+            padding: 10px 12px;
+            border: none;
             padding: 14px 16px;
-            border-radius: 10px;
         }
 
-        body {
-            margin-top: 76px;
+        .navbar #btnCart:hover,
+        .navbar #btnlogin:hover,
+        .navbar #btnFav:hover,
+        .navbar #btnLogout {
+            background-color: gray;
+        }
+
+        .logo a {
+            background-color: rgba(128, 128, 128, 0);
+        }
+
+        /* .navbar .buttonArea a {
+            background-color: white;
+            color: black;
+            padding: 10px 12px;
+            border-radius: 10px;
+            border: none;
+            text-decoration: none;
+            font-size: 15px;
+        } */
+
+        .navbar .buttonArea a:hover,
+        .navbar #aboutUs:hover,
+        .navbar #connectUs:hover {
+            background-color: gray;
         }
     </style>
 
@@ -139,10 +172,10 @@
                     <!-- <i class="fa fa-caret-down"></i> -->
                 </button>
                 <div class="dropdown-content">
-                    <a href="#">長棍</a>
-                    <a href="#">短棍</a>
-                    <a href="#">扇</a>
-                    <a href="#">poi</a>
+                    <a href="./商品頁_01.html">長棍</a>
+                    <a href="./商品頁_02.html">短棍</a>
+                    <a href="./商品頁_03.html">扇</a>
+                    <a href="./商品頁_04.html">poi</a>
                 </div>
             </div>
 
@@ -152,10 +185,10 @@
                     <!-- <i class="fa fa-caret-down"></i> -->
                 </button>
                 <div class="dropdown-content">
-                    <a href="https://www.ladyflavor.com/products/cat-tent">長棍</a>
-                    <a href="#">短棍</a>
-                    <a href="#">扇</a>
-                    <a href="#">poi</a>
+                    <a href="./商品頁_05.html">長棍</a>
+                    <a href="./商品頁_06.html">短棍</a>
+                    <a href="./商品頁_07.html">扇</a>
+                    <a href="./商品頁_08.html">poi</a>
                 </div>
             </div>
 
@@ -165,35 +198,20 @@
                     <!-- <i class="fa fa-caret-down"></i> -->
                 </button>
                 <div class="dropdown-content">
-                    <a href="#">火布</a>
-                    <a href="#">鋁棍</a>
-                    <a href="#">扇架</a>
+                    <a href="./商品頁_09.html">火布</a>
+                    <a href="./商品頁_10.html">扇架</a>
                 </div>
             </div>
-            <a href="./關於我們.html">關於我們</a>
-            <a href="">聯絡我們</a>
+            <a href="./關於我們.html" id="aboutUs">關於我們</a>
+            <a href="./聯絡我們.html" id="connectUs">聯絡我們</a>
         </div>
         <div class="buttonArea" id="loginArea">
-            <button id="btnFav">我的最愛</button>
-            <button id="btnCart">購物車</button>
-            <button id="btnLogin">登入</button>
+            <a id="btnFav" href="./1_我的最愛.html">我的最愛</a>
+            <a id="btnCart" href="./1_購物車頁.html">購物車</a>
+            <a id="btnlogin" href="./1_登入頁.html">登入</a>
+            <!-- <button id="btnlogin">登入</button> -->
         </div>
     </div>
-
-    <script>
-        btnFav.onclick = () => {
-            window.location.href = '1_我的最愛.html';
-        }
-
-        btnCart.onclick = () => {
-            window.location.href = './1_購物車頁.html';
-        }
-
-        btnLogin.onclick = () => {
-            window.location.href = './1_登入頁.html';
-        }
-    </script>
-
     <!-- 各種介紹 CSS -->
     <style>
         body {
@@ -281,7 +299,7 @@
         <div class="intro" id="kevlarIntro">
             <!-- 火布照片 -->
             <div class="photo" id="kevlarImg">
-                <img src="./Photo/logo_vertical.jpg">
+                <img src="./Photo/火布.jpg">
             </div>
 
             <!-- 火布文字介紹 -->
