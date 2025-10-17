@@ -6,10 +6,222 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>我的最愛</title>
     <script src="./_js/jquery-3.7.1.js"></script>
-    <link rel="stylesheet" href="./css/1_style.css">
+    <link rel="icon" href="./Photo/logo_circle.png">
 </head>
 
-<style>
+
+
+
+
+<body>
+    <!-- 導覽列CSS -->
+    <style>
+        body {
+            margin-top: 76px;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background-color: black;
+            color: white;
+            display: flex;
+            /* 彈性布局，使內容自動隨容器大小分配位置 */
+            align-items: center;
+            /* 上下置中 */
+            justify-content: center;
+            /* flexbox中的對齊屬性，控制水平軸中元素的位置分配。
+            space-between: 從左到右完全平均分配位置 */
+            padding: 16px;
+            z-index: 1000;
+            /* 層數，數字越高越上層 */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            /* overflow: hidden; */
+            /* background-color: #333; */
+        }
+
+        .navbar a {
+            float: left;
+            font-size: 16px;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .logo {
+            left: 0;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            /* 移除超連結底線 */
+            margin-left: 15px;
+        }
+
+        /* .menu a:hover {
+            text-decoration: underline;
+        } */
+
+        /* .navbar a:hover, */
+        .dropdown:hover .dropbtn {
+            background-color: gray;
+        }
+
+        .navbar .logo:hover {
+            background-color: none;
+        }
+
+        .dropdown {
+            float: left;
+            overflow: hidden;
+        }
+
+        .dropdown .dropbtn {
+            font-size: 16px;
+            border: none;
+            outline: none;
+            color: white;
+            padding: 14px 16px;
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .navbar .buttonArea {
+            margin-left: 630px;
+            gap: 20px;
+        }
+
+        .navbar #btnCart,
+        .navbar #btnlogin,
+        .navbar #btnFav {
+            background-color: black;
+            color: white;
+            padding: 10px 12px;
+            border: none;
+            padding: 14px 16px;
+        }
+
+        .navbar #btnCart:hover,
+        .navbar #btnlogin:hover,
+        .navbar #btnFav:hover,
+        .navbar #btnLogout {
+            background-color: gray;
+        }
+
+        .logo a {
+            background-color: rgba(128, 128, 128, 0);
+        }
+
+        /* .navbar .buttonArea a {
+            background-color: white;
+            color: black;
+            padding: 10px 12px;
+            border-radius: 10px;
+            border: none;
+            text-decoration: none;
+            font-size: 15px;
+        } */
+
+        .navbar .buttonArea a:hover,
+        .navbar #aboutUs:hover,
+        .navbar #connectUs:hover {
+            background-color: gray;
+        }
+    </style>
+
+    <!-- 導覽列 -->
+    <div class="navbar">
+        <div class="logo">
+            <a href="./小專主頁.html">
+                <img src="./Photo/logo_circle.png" style="width: 60px; height: 60px; left: 25px;">
+            </a>
+        </div>
+        <div class="menu">
+            <div class="dropdown">
+                <button class="dropbtn">火具系列
+                    <!-- 向下箭頭 -->
+                    <!-- <i class="fa fa-caret-down"></i> -->
+                </button>
+                <div class="dropdown-content">
+                    <a href="./商品頁_01.html">長棍</a>
+                    <a href="./商品頁_02.html">短棍</a>
+                    <a href="./商品頁_03.html">扇</a>
+                    <a href="./商品頁_04.html">poi</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropbtn">練習道具系列
+                    <!-- 向下箭頭 -->
+                    <!-- <i class="fa fa-caret-down"></i> -->
+                </button>
+                <div class="dropdown-content">
+                    <a href="./商品頁_05.html">長棍</a>
+                    <a href="./商品頁_06.html">短棍</a>
+                    <a href="./商品頁_07.html">扇</a>
+                    <a href="./商品頁_08.html">poi</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropbtn">配件
+                    <!-- 向下箭頭 -->
+                    <!-- <i class="fa fa-caret-down"></i> -->
+                </button>
+                <div class="dropdown-content">
+                    <a href="./商品頁_09.html">火布</a>
+                    <a href="./商品頁_10.html">扇架</a>
+                </div>
+            </div>
+            <a href="./關於我們.html" id="aboutUs">關於我們</a>
+            <a href="./聯絡我們.html" id="connectUs">聯絡我們</a>
+        </div>
+        <div class="buttonArea" id="loginArea">
+            <a id="btnFav" href="./1_我的最愛.html">我的最愛</a>
+            <a id="btnCart" href="./1_購物車頁.html">購物車</a>
+            <a id="btnlogin" href="./1_登入頁.html">登入</a>
+            <!-- <button id="btnlogin">登入</button> -->
+        </div>
+    </div>
+
+
+
+
+    <style>
     body {
         display: flex;
         align-items: flex-start;
@@ -47,10 +259,11 @@
 
     .btnArea {
         align-content: center;
-        margin-left: 320px;
+        margin-left: auto;
+        margin-right: 50px;
     }
 
-    button {
+    #favList button {
         /* margin-left: 695px; */
         border-radius: 6px;
         font-size: 16px;
@@ -59,9 +272,16 @@
         color: white;
         border: none;
     }
+
+    .favItem img{
+        border-radius: 8px 0 0 8px;
+    }
+
+    .favItem p{
+        color: orangered;
+    }
 </style>
 
-<body>
     <main>
         <h2>我的最愛</h2>
         <div id="favList">
@@ -70,6 +290,8 @@
         <!-- <script src="./_js/1_script.js"></script> -->
     </main>
 </body>
+
+
 
 <!-- 加入最愛 -->
 <script>
@@ -91,27 +313,38 @@
                     <img src=${item.img}>
                     <main class='main'>
                     <h4>${item.name}</h4>
-                    <p>價格: $${item.price}</p>
+                    <p>$${item.price}</p>
                     </main>
                     <div class="btnArea">
                         <button class="btnRemoveFav">移除最愛</button>
                     </div>
                 </div>`
+                console.log(item);
         }).join('');
     }
 
     showFav();
 
     // 綁定移除按鈕事件
-    document.querySelectorAll('.btnRemoveFav').forEach(btn => {
-                btn.addEventListener('click', (e) => {
+    // document.querySelectorAll('.btnRemoveFav').forEach(btn => {
+    //             btn.addEventListener('click', (e) => {
 
-                    // 找到e.target(被點擊的元素 -> 刪除按鈕<button>)最近的父元素
-                    // 取出 HTML 裡的 data-index 屬性值
-                    const index = e.target.closest('.favItem').dataset.index;
-                    removeFromFav(index);
-                })
-            })
+    //                 // 找到e.target(被點擊的元素 -> 刪除按鈕<button>)最近的父元素
+    //                 // 取出 HTML 裡的 data-index 屬性值
+    //                 const index = e.target.closest('.favItem').dataset.index;
+    //                 removeFromFav(index);
+    //             })
+    //         })
+
+    // 原本方法會造成一次刷新只能刪除一次
+    // 因為刷新頁面後會先綁定事件，但點擊刪除後又重新渲染頁面，綁定的事件就消失
+    // 解法: 事件委派 -> 事件冒泡，把事件綁在父層上，只要父層還在，不管子層怎麼渲染，事件都不會不見
+    favList.addEventListener('click', function(e){
+        if(e.target.classList.contains('btnRemoveFav')){
+            const id = e.target.dataset.id;
+            removeFromFav();
+        }
+    });
 
     function removeFromFav(index) {
         const fav = loadFav();

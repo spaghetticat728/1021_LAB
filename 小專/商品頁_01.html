@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./_js/jquery-3.7.1.js"></script>
     <title>長棍-Twista火頭</title>
+    <link rel="icon" href="./Photo/logo_circle.png">
 </head>
 
 <body>
@@ -13,13 +14,18 @@
         const product = {
             id: 'p001',
             name: '長棍-Twista火頭',
-            price: 1200,
-            img: './Photo/logo_square.jpg'
+            price: 2800,
+            img: './Photo/火長棍.jpg'
         }
     </script>
 
     <!-- 導覽列CSS -->
     <style>
+        body {
+            margin-top: 76px;
+            overflow-x: hidden;
+        }
+
         .navbar {
             position: fixed;
             top: 0;
@@ -35,7 +41,7 @@
             justify-content: center;
             /* flexbox中的對齊屬性，控制水平軸中元素的位置分配。
             space-between: 從左到右完全平均分配位置 */
-            padding: 8px;
+            padding: 16px;
             z-index: 1000;
             /* 層數，數字越高越上層 */
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -67,9 +73,13 @@
             text-decoration: underline;
         } */
 
-        .navbar a:hover,
+        /* .navbar a:hover, */
         .dropdown:hover .dropbtn {
             background-color: gray;
+        }
+
+        .navbar .logo:hover {
+            background-color: none;
         }
 
         .dropdown {
@@ -86,6 +96,7 @@
             background-color: inherit;
             font-family: inherit;
             margin: 0;
+            cursor: pointer;
         }
 
         .dropdown-content {
@@ -116,22 +127,44 @@
 
         .navbar .buttonArea {
             margin-left: 630px;
-            gap: 10px;
+            gap: 20px;
         }
 
         .navbar #btnCart,
         .navbar #btnlogin,
-        .navbar #btnFav,
-        .navbar #btnLogout {
-            background-color: white;
-            color: black;
+        .navbar #btnFav {
+            background-color: black;
+            color: white;
+            padding: 10px 12px;
+            border: none;
             padding: 14px 16px;
-            border-radius: 10px;
         }
 
-        body {
-            margin-top: 76px;
-            overflow-x: hidden;
+        .navbar #btnCart:hover,
+        .navbar #btnlogin:hover,
+        .navbar #btnFav:hover,
+        .navbar #btnLogout {
+            background-color: gray;
+        }
+
+        .logo a {
+            background-color: rgba(128, 128, 128, 0);
+        }
+
+        /* .navbar .buttonArea a {
+            background-color: white;
+            color: black;
+            padding: 10px 12px;
+            border-radius: 10px;
+            border: none;
+            text-decoration: none;
+            font-size: 15px;
+        } */
+
+        .navbar .buttonArea a:hover,
+        .navbar #aboutUs:hover,
+        .navbar #connectUs:hover {
+            background-color: gray;
         }
     </style>
 
@@ -149,10 +182,10 @@
                     <!-- <i class="fa fa-caret-down"></i> -->
                 </button>
                 <div class="dropdown-content">
-                    <a href="#">長棍</a>
-                    <a href="#">短棍</a>
-                    <a href="#">扇</a>
-                    <a href="#">poi</a>
+                    <a href="./商品頁_01.html">長棍</a>
+                    <a href="./商品頁_02.html">短棍</a>
+                    <a href="./商品頁_03.html">扇</a>
+                    <a href="./商品頁_04.html">poi</a>
                 </div>
             </div>
 
@@ -162,10 +195,10 @@
                     <!-- <i class="fa fa-caret-down"></i> -->
                 </button>
                 <div class="dropdown-content">
-                    <a href="https://www.ladyflavor.com/products/cat-tent">長棍</a>
-                    <a href="#">短棍</a>
-                    <a href="#">扇</a>
-                    <a href="#">poi</a>
+                    <a href="./商品頁_05.html">長棍</a>
+                    <a href="./商品頁_06.html">短棍</a>
+                    <a href="./商品頁_07.html">扇</a>
+                    <a href="./商品頁_08.html">poi</a>
                 </div>
             </div>
 
@@ -175,34 +208,20 @@
                     <!-- <i class="fa fa-caret-down"></i> -->
                 </button>
                 <div class="dropdown-content">
-                    <a href="#">火布</a>
-                    <a href="#">鋁棍</a>
-                    <a href="#">扇架</a>
+                    <a href="./商品頁_09.html">火布</a>
+                    <a href="./商品頁_10.html">扇架</a>
                 </div>
             </div>
-            <a href="./關於我們.html">關於我們</a>
-            <a href="">聯絡我們</a>
+            <a href="./關於我們.html" id="aboutUs">關於我們</a>
+            <a href="./聯絡我們.html" id="connectUs">聯絡我們</a>
         </div>
         <div class="buttonArea" id="loginArea">
-            <button id="btnFav" href="./1_我的最愛.html">我的最愛</button>
-            <button id="btnCart" href="./1_購物車頁.html">購物車</button>
-            <button id="btnlogin" href="./1_登入頁.html">登入</button>
+            <a id="btnFav" href="./1_我的最愛.html">我的最愛</a>
+            <a id="btnCart" href="./1_購物車頁.html">購物車</a>
+            <a id="btnlogin" href="./1_登入頁.html">登入</a>
+            <!-- <button id="btnlogin">登入</button> -->
         </div>
     </div>
-
-    <script>
-        document.getElementById('btnFav').onclick = () => {
-            window.location.href = '1_我的最愛.html';
-        }
-
-        document.getElementById('btnCart').onclick = () => {
-            window.location.href = './1_購物車頁.html';
-        }
-
-        document.getElementById('btnlogin').onclick = () => {
-            window.location.href = './1_登入頁.html';
-        }
-    </script>
 
     <!-- 商品box CSS -->
     <style>
@@ -330,8 +349,8 @@
     <main>
         <div class="productBox">
             <!-- 商品圖片 -->
-            <div class="productImg">
-                <img src="./Photo/logo_square.jpg">
+            <div class="productImg" id="image">
+                <img src="./Photo/火長棍.jpg">
             </div>
 
             <!-- 商品資訊 -->
@@ -341,7 +360,7 @@
 
                 <div id="buy">
                     <!-- 尺寸選擇 -->
-                    <p class="youChoose">尺寸:隨選擇變動的文字</p>
+                    <p class="youChoose">尺寸: 110cm</p>
                     <div class="productChoose" id="productChoose">
                         <div class="option selected">110cm</div>
                         <div class="option">130cm</div>
@@ -364,7 +383,6 @@
                 </div>
             </div>
         </div>
-
     </main>
 
     <script>
@@ -392,9 +410,15 @@
                 option.addEventListener('click', () => {
                     options.forEach(all => all.classList.remove('selected'));
                     option.classList.add('selected');
+
+                    // 顯示品項選擇
+                    const selected = $('.selected').text();
+                    $('.youChoose').text('尺寸: ' + selected);
                 })
             })
         })
+
+
     </script>
 
     <!-- 商品介紹 & 運送方式 CSS-->
@@ -448,8 +472,12 @@
                 <p>商品介紹商品介紹，商品介紹商品介紹商品介紹。</p>
             </div>
             <div id="transport" class="content">
-                <h3>運送方式</h3>
-                <p>運送方式運送方式，運送方式運送方式運送方式。</p>
+                <h3>運送方式及運費</h3>
+                <p>
+                    僅提供貨到付款<br>
+                    超商取貨: 7-11、全家<br>
+                    運費:$80
+                </p>
             </div>
         </div>
     </div>
@@ -474,15 +502,13 @@
     <style>
         .pro h3 {
             padding: 0 0 0 50px;
+            margin-left: 120px;
         }
 
-        .pro .cardList {
-            /* 啟用 CSS Grid 佈局，讓卡片能以格子的方式排列。 */
-            display: grid;
-            /* 每一欄最小寬度是 200px，最大可撐到 1fr（平均分配空間） */
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            /* 每張卡片之間的間距。 */
-            gap: 20px;
+        .pro .cardList{
+            display: flex;
+            justify-content: center;
+            gap: 230px;
             padding: 0 50px 50px 50px;
         }
 
@@ -507,6 +533,7 @@
         }
 
         .pro h4 {
+            color: black;
             font-size: 18px;
             margin: 10px 0;
             margin-bottom: 0px;
@@ -531,63 +558,62 @@
             display: grid;
             /* 水平排列 */
             grid-auto-flow: column;
-            justify-content: end;
+            justify-content: center;
             gap: 6px;
         }
 
         .pro .card button:hover {
             background-color: #242424e6;
         }
+
+        .card a{
+            text-decoration: none;
+        }
     </style>
 
     <!-- 相關商品小卡 -->
     <div class="pro">
-        <h3>相關商品</h3><br>
+        <h3>推薦商品</h3><br>
         <div class="cardList">
 
-            <div class="card">
-                <img src="./Photo/logo_square.jpg">
-                <h4>twista火棍</h4>
-                <p class="price">$1200</p>
+            <div class="card" data-id="p002" data-name="雙短-Twista火頭" data-price="2600" data-img="./Photo/火雙短.jpg">
+                <a href="./商品頁_02.html">
+                    <img src="./Photo/火雙短.jpg">
+                    <h4>雙短-Twista火頭</h4>
+                    <p class="price">$2600</p>
+                </a>
                 <div class="buttonArea">
-                    <button>最愛</button>
-                    <button>加入購物車</button>
+                    <button class="btnAddFav"></button>
                 </div>
             </div>
-            <div class="card">
-                <img src="./Photo/logo_square.jpg">
-                <h4>twista火棍</h4>
-                <p class="price">$1200</p>
+            <div class="card" data-id="p003" data-name="火扇" data-price="4800" data-img="./Photo/火扇.png">
+                <a href="./商品頁_03.html">
+                    <img src="./Photo/火扇.png">
+                    <h4>火扇</h4>
+                    <p class="price">$4800</p>
+                </a>
                 <div class="buttonArea">
-                    <button>最愛</button>
-                    <button>加入購物車</button>
+                    <button class="btnAddFav"></button>
                 </div>
             </div>
-            <div class="card">
-                <img src="./Photo/logo_square.jpg">
-                <h4>twista火棍</h4>
-                <p class="price">$1200</p>
+            <div class="card" data-id="p004" data-name="Poi-Twista火頭" data-price="2200" data-img="./Photo/火poi.jpg">
+                <a href="./商品頁_04.html">
+                    <img src="./Photo/火poi.jpg">
+                    <h4>Poi-Twista火頭</h4>
+                    <p class="price">$2200</p>
+                </a>
                 <div class="buttonArea">
-                    <button>最愛</button>
-                    <button>加入購物車</button>
+                    <button class="btnAddFav"></button>
                 </div>
             </div>
-            <div class="card">
-                <img src="./Photo/logo_square.jpg">
-                <h4>twista火棍</h4>
-                <p class="price">$1200</p>
+            <div class="card" data-id="p009" data-name="Kevlar火布-1000cm" data-price="1400" data-img="./Photo/火布.jpg">
+                <a href="./商品頁_01.html">
+                    <img src="./Photo/火布.jpg">
+                    <h4>Kevlar火布-1000cm</h4>
+                    <p class="price">$1400</p>
+                </a>
                 <div class="buttonArea">
-                    <button>最愛</button>
-                    <button>加入購物車</button>
-                </div>
-            </div>
-            <div class="card">
-                <img src="./Photo/logo_square.jpg">
-                <h4>twista火棍</h4>
-                <p class="price">$1200</p>
-                <div class="buttonArea">
-                    <button>最愛</button>
-                    <button>加入購物車</button>
+                    <button class="btnAddFav"></button>
                 </div>
             </div>
         </div>
@@ -625,7 +651,7 @@
             <a href="#">ig:instagram_account</a><br>
             電話:04-XXXXXXXX<br>
             信箱:XXXXXX123456@gmail.com<br>
-            <a href="./關於我們.html">關於我們</a>&nbsp;|&nbsp;<a href="#">聯絡我們</a><br>
+            <a href="./關於我們.html">關於我們</a>&nbsp;|&nbsp;<a href="./聯絡我們.html">聯絡我們</a><br>
         </p>
     </footer>
 
