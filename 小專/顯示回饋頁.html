@@ -261,9 +261,11 @@
             }
 
             feedbackList.innerHTML = feedback.map((item, index) => {
+                const localTime = new Date(item.time).toLocaleString('zh-TW', {timeZone: 'Asia/Taipei'});
+
                 return `<div class="feedbackItem" data-index="${index}">
                         <p><b>email: ${item.email}</b></p>
-                        <p>時間: ${item.time}</p>
+                        <p>時間: ${localTime}</p>
                         <p>內容:</p>
                         <p>${item.content}</p>
                         </div>

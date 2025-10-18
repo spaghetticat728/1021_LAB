@@ -309,7 +309,7 @@
 
         favList.innerHTML = fav.map((item, index) => {
             return `<div class="favItem" data-index="${index}" data-id="${item.id}">
-                    <img src=${item.img}>
+                    <a href="${item.href}"><img src=${item.img}></a>
                     <main class='main'>
                     <h4>${item.name}</h4>
                     <p>$${item.price}</p>

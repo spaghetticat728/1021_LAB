@@ -262,7 +262,8 @@
 
         .btnArea {
             align-content: center;
-            margin-left: 350px;
+            margin-left: auto;
+            margin-right: 50px;
         }
 
         .cartItem {
@@ -295,7 +296,6 @@
             return JSON.parse(localStorage.getItem('cart')) || [];
         }
 
-        let totalPrice = 0;
         const cartList = document.getElementById('cartList');
         // console.log(cartList);
         function showCart() {
@@ -307,13 +307,14 @@
                 document.getElementById('totalPrice').textContent = '0';
                 return;
             }
-
+            let totalPrice = 0;
             cartList.innerHTML = cart.map((item, index) => {
                 const itemTotal = item.price * item.qty;
+                ;
                 totalPrice += itemTotal;
 
                 return `<div class="cartItem" data-index="${index}">
-                <img src=${item.img}>
+                <a href=${item.href}><img src=${item.img}></a>
                 <main class='main'>
                 <h4>${item.name}</h4>
                 <p>選項: ${item.option}</p>    
