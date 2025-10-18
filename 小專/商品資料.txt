@@ -2,28 +2,32 @@ const product = {
             id: 'p001',
             name: '長棍-Twista火頭',
             price: 2800
-            img: "./Photo/火長棍.jpg"
+            img: "./Photo/火長棍.jpg",
+            href: "./商品頁_01.html"
         }
 
 const product = {
             id: 'p002',
             name: '雙短-Twista火頭',
             price: 2600,
-            img: "./Photo/火雙短.jpg"
+            img: "./Photo/火雙短.jpg",
+            href: "./商品頁_02.html"
         }
 
 const product = {
             id: 'p003',
             name: '火扇',
             price: 4800,
-            img: "./Photo/火扇.png"
+            img: "./Photo/火扇.png",
+            href: "./商品頁_03.html"
         }
 
 const product = {
             id: 'p004',
             name: 'Poi-Twista火頭',
             price: 2200,
-            img: "./Photo/火poi.jpg"
+            img: "./Photo/火poi.jpg",
+            href: "./商品頁_04.html"
         }
 
 
@@ -31,35 +35,40 @@ const product = {
             id: 'p005',
             name: '練習長棍',
             price: 1400,
-            img: "./Photo/練習長棍.jpg"
+            img: "./Photo/練習長棍.jpg",
+            href: "./商品頁_05.html"
         }
 
 const product = {
             id: 'p006',
             name: '練習雙短',
             price: 1500,
-            img: "./Photo/練習雙短.jpg"
+            img: "./Photo/練習雙短.jpg",
+            href: "./商品頁_06.html"
         }
 
 const product = {
             id: 'p007',
             name: '練習扇',
             price: 2800,
-            img: "./Photo/練習扇.jpg"
+            img: "./Photo/練習扇.jpg",
+            href: "./商品頁_07.html"
         }
 
 const product = {
             id: 'p008',
             name: '練習Poi',
             price: 1200,
-            img: "./Photo/練習poi.jpg"
+            img: "./Photo/練習poi.jpg",
+            href: "./商品頁_08.html"
         }
 
 const product = {
             id: 'p009',
             name: 'Kevlar火布-1000cm',
             price: 1400,
-            img: "./Photo/火布.jpg"
+            img: "./Photo/火布.jpg",
+            href: "./商品頁_09.html"
         }
 25mm 3mm
 
@@ -67,5 +76,6 @@ const product = {
             id: 'p010',
             name: '蜘蛛扇架',
             price: 3000,
-            img: ""
+            img: "",
+            href: "./商品頁_10.html"
         }

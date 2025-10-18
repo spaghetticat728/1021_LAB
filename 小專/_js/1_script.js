@@ -233,7 +233,8 @@ document.querySelectorAll('.card').forEach(card => {
         id: card.dataset.id,
         name: card.dataset.name,
         price: card.dataset.price,
-        img: card.dataset.img
+        img: card.dataset.img,
+        href: card.dataset.href
     }
 
     const btnAddFav = card.querySelector('.btnAddFav');

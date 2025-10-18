@@ -358,13 +358,18 @@
                 return;
             }
 
+            let totalPrice = 0;
+            cart.forEach(item => {
+                totalPrice += item.price * item.qty;
+            });
+
             alert(`購買成功! 共${cart.length}項商品，總計${totalPrice}元`);
             localStorage.removeItem('cart');
             showCart();
         })
     </script>
 
-        
+
     <script src="./_js/1_script.js"></script>
 </body>
 
