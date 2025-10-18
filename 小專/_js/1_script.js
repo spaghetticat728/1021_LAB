@@ -38,6 +38,7 @@ function logout() {
     localStorage.removeItem('user');
     localStorage.removeItem('cart');
     localStorage.removeItem('fav');
+    localStorage.removeItem('feedback');
 }
 
 // 綁定登入按鈕(登入頁)
@@ -64,7 +65,8 @@ if (btnLogin) {
 
 // login 主頁
 // Login 登入頁
-
+const btnlogin = document.getElementById('btnlogin');
+if(btnlogin){
 function updateNavLogin() {
     const btnlogin = document.getElementById('btnlogin');
     if (isLogin()) {
@@ -78,7 +80,7 @@ function updateNavLogin() {
     }
 }
 updateNavLogin();
-
+}
 
 //--------------
 // 購物車

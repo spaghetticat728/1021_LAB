@@ -1,17 +1,11 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的最愛</title>
-    <script src="./_js/jquery-3.7.1.js"></script>
-    <link rel="icon" href="./Photo/logo_circle.png">
+    <title>意見回饋紀錄</title>
 </head>
-
-
-
-
 
 <body>
     <!-- 導覽列CSS -->
@@ -219,8 +213,6 @@
     </div>
 
 
-
-
     <style>
         body {
             display: flex;
@@ -229,135 +221,60 @@
             /* padding-top: 30vh; */
         }
 
-        #favList {
+        h2 {
+            font-size: 30px;
+        }
+
+        #feedbackList {
             width: 800px;
             margin: auto;
             border: solid 1px black;
             border-radius: 8px;
         }
 
-        h2 {
-            font-size: 30px;
-        }
-
-        img {
-            width: 200px;
-            height: 200px;
-        }
-
-        .favItem {
-            display: flex;
-        }
-
-        .favItem h4 {
-            margin-left: 20px;
-        }
-
-        .favItem p {
-            margin-left: 50px;
-        }
-
-        .btnArea {
-            align-content: center;
-            margin-left: auto;
-            margin-right: 50px;
-        }
-
-        #favList button {
-            /* margin-left: 695px; */
-            border-radius: 6px;
-            font-size: 16px;
-            padding: 6px 15px;
-            background-color: black;
-            color: white;
-            border: none;
-        }
-
-        .favItem img {
-            border-radius: 8px 0 0 8px;
-        }
-
-        .favItem p {
-            color: orangered;
+        .feedbackItem {
+            /* background: #f6f6f6; */
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 8px;
         }
     </style>
 
     <main>
-        <h2>我的最愛</h2>
-        <div id="favList">
-
-        </div>
+        <h2>意見回饋紀錄</h2>
+        <div id="feedbackList"></div>
     </main>
+
+
+    <script>
+        function loadFeedback() {
+            return JSON.parse(localStorage.getItem('feedback')) || [];
+        }
+
+        const feedbackList = document.getElementById('feedbackList');
+
+        function showFeedback() {
+            const feedback = loadFeedback();
+            if (feedback.length == 0) {
+                feedbackList.innerHTML = '<p>目前沒有回饋</p>'
+                return;
+            }
+
+            feedbackList.innerHTML = feedback.map((item, index) => {
+                return `<div class="feedbackItem" data-index="${index}">
+                        <p><b>email: ${item.email}</b></p>
+                        <p>時間: ${item.time}</p>
+                        <p>內容:</p>
+                        <p>${item.content}</p>
+                        </div>
+                        ${index < feedback.length - 1 ? '<hr>' : ''}`
+            }).join('');
+        }
+
+        showFeedback();
+    </script>
+
+    <script src="./_js/1_script.js"></script>
 </body>
-
-
-
-<!-- 加入最愛 -->
-<script>
-    function loadFav() {
-        return JSON.parse(localStorage.getItem('fav')) || [];
-    }
-
-    const favList = document.getElementById('favList');
-
-    function showFav() {
-        const fav = loadFav();
-        if (fav.length == 0) {
-            favList.innerHTML = '<p>目前沒有最愛商品</p>'
-            return;
-        }
-
-        favList.innerHTML = fav.map((item, index) => {
-            return `<div class="favItem" data-index="${index}" data-id="${item.id}">
-                    <img src=${item.img}>
-                    <main class='main'>
-                    <h4>${item.name}</h4>
-                    <p>$${item.price}</p>
-                    </main>
-                    <div class="btnArea">
-                        <button class="btnRemoveFav">移除最愛</button>
-                    </div>
-                </div>`
-            console.log(item);
-        }).join('');
-    }
-
-    showFav();
-
-    // 綁定移除按鈕事件
-    // document.querySelectorAll('.btnRemoveFav').forEach(btn => {
-    //             btn.addEventListener('click', (e) => {
-
-    //                 // 找到e.target(被點擊的元素 -> 刪除按鈕<button>)最近的父元素
-    //                 // 取出 HTML 裡的 data-index 屬性值
-    //                 const index = e.target.closest('.favItem').dataset.index;
-    //                 removeFromFav(index);
-    //             })
-    //         })
-
-    // 原本方法會造成一次刷新只能刪除一次
-    // 因為刷新頁面後會先綁定事件，但點擊刪除後又重新渲染頁面，綁定的事件就消失
-    // 解法: 事件委派 -> 事件冒泡，把事件綁在父層上，只要父層還在，不管子層怎麼渲染，事件都不會不見
-    favList.addEventListener('click', function (e) {
-        if (e.target.classList.contains('btnRemoveFav')) {
-            const id = e.target.closest('.favItem').dataset.id;
-            removeFromFav(id);
-            
-            console.log(e.target.closest('.favItem').dataset.id);
-        }
-    });
-
-    function removeFromFav(id) {
-        // 用id刪除
-        const fav = loadFav().filter(item => item.id != id);
-        // 用index刪除
-        // fav.splice(index, 1);
-        localStorage.setItem('fav', JSON.stringify(fav));
-        showFav();
-    }
-    
-</script>
-
-<script src="./_js/1_script.js"></script>
 
 </html>

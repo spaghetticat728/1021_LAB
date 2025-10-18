@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>聯絡我們</title>
     <script src="./_js/jquery-3.7.1.js"></script>
-    <link rel="stylesheet" href="./css/1_style.css">
     <link rel="icon" href="./Photo/logo_circle.png">
 </head>
 
@@ -52,7 +51,7 @@
             color: white;
         }
 
-        #feadbackBox {
+        #feedbackBox {
             /* text-align: center; */
             width: 450px;
             border: solid 4px white;
@@ -96,7 +95,7 @@
             font-size: 15px;
         }
 
-        #feadbackBox button {
+        #feedbackBox button {
             margin-left: 330px;
             background-color: rgba(240, 248, 255, 0);
             border: solid 1px white;
@@ -107,7 +106,7 @@
         }
 
         #back button {
-            margin: 20px 30px;
+            margin: 20px 0 20px 30px;
             background-color: rgba(240, 248, 255, 0);
             border: solid 1px white;
             border-radius: 6px;
@@ -120,11 +119,12 @@
 
     <div class="background">
         <div id="back" style="color: rgba(255, 255, 255);">
-            <button id="back">回首頁</button>
+            <button id="backhome">回首頁</button>
+            <button id="viewFeedback">查看紀錄</button>
         </div>
-        <div id="feadbackBox">
+        <div id="feedbackBox">
             <h2>聯絡我們</h2>
-            <form>
+            <form id="feedbackForm">
                 <lable for="email">電子信箱:</lable> <input type="email" id="email" placeholder="輸入信箱"><br><br>
                 <lable for="feedbackInput">意見回饋:<br></lable> <textarea id="feedbackInput" rows="4" cols="30" placeholder="輸入內容"></textarea>
             </form>
@@ -135,23 +135,27 @@
 
     <script>
         // 回主頁按鈕
-        document.getElementById('back').addEventListener('click', () => {
+        document.getElementById('backhome').addEventListener('click', () => {
             window.location.href = './小專主頁.html';
         })
 
-        // feadback = {
+        document.getElementById('viewFeedback').addEventListener('click', () => {
+            window.location.href = './顯示回饋頁.html';
+        })
+
+        // feedback = {
         //     email: email,
         //     content: feedbackInput,
         //     time: new Date().toISOString()
         // }
 
         // 意見存取
-        function loadFeadback() {
-            return JSON.parse(localStorage.getItem('feadback')) || [];
+        function loadFeedback() {
+            return JSON.parse(localStorage.getItem('feedback')) || [];
         }
 
         function saveFeedback(feedback) {
-            localStorage.setItem('feadback', JSON.stringify(feedback))
+            localStorage.setItem('feedback', JSON.stringify(feedback))
         }
 
         function sendFeedback() {
@@ -162,24 +166,25 @@
 
             const feedbackInput = document.getElementById('feedbackInput').value
             const email = document.getElementById('email').value;
+            const form = document.getElementById('feedbackForm');
 
             if(!email || !feedbackInput){
                 alert("請填寫完整資料");
                 return;
             }
 
-            const feedback = loadFeadback();
+            const feedback = loadFeedback();
 
-            const newfeadback = {
+            const newfeedback = {
                 email: email,
                 content: feedbackInput,
                 time: new Date().toISOString()
             }
 
-            feedback.push(newfeadback);
-
+            feedback.push(newfeedback);
             saveFeedback(feedback);
             alert("回饋已送出");
+            form.reset();
         }
 
         // 綁定送出按鈕事件
